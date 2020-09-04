@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :orders
 
   with_options presence: true do
-    validates :nickname, format: { with: /\A[a-z0-9]+\z/i, message: 'is invalid. Input half-width characters.' }
+    validates :nickname
+    validates :birthday
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters.' } do
       validates :first_name
       validates :last_name
