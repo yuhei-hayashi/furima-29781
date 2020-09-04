@@ -35,9 +35,7 @@ Things you may want to cover:
 | last_name | string | null: false |
 | first_name_reading | string | null: false |
 | last_name_reading | string | null: false |
-| birthday_year | integer | null: false |
-| birthday_month | integer | null: false |
-| birthday_day | integer | null: false |
+| birthday | date | null: false |
 
 ### Association
 
@@ -85,7 +83,7 @@ Things you may want to cover:
 | city | string | null: false |
 | house_number | string | null: false|
 | building_name | string| |
-| telephone | integer | null: false |
+| telephone | string | null: false |
 | order | references | nill: false , foreign_key: true |
 
 ### Association
