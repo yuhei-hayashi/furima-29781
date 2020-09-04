@@ -18,5 +18,4 @@ class User < ApplicationRecord
              validates :last_name_reading
            end
            end
-         end
-
+end

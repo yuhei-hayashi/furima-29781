@@ -90,4 +90,11 @@ Things you may want to cover:
 
 - belongs_to order
 
-      
+ belongs_to :user
+  has_many :order
+
+  belongs_to :user
+  belongs_to :item
+  has_one :address
+
+belongs_to :order
