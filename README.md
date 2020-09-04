@@ -31,18 +31,23 @@ Things you may want to cover:
 | nickname | string | null: false |
 | email | string | null: false |
 | password | string | null: false |
+| first_name | string | null: false |
+| last_name | string | null: false |
+| first_name_reading | string | null: false |
+| last_name_reading | string | null: false |
+| birthday_year | integer | null: false |
+| birthday_month | integer | null: false |
+| birthday_day | integer | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :comments
 - has_many :orders
 
 ## itemsテーブル
 | Column | Type | Option |
 | ------ | ---- | ------ |
 | name | string | null: false |
-| image | string | null: false |
 | price | integer | null: false |
 | status | integer | null: false |
 | delivery | integer | null: false |
@@ -54,15 +59,13 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :comments
-- has_many :genres , through: item_genres
 - has_one :order
+- has_one_attached :image
 
 ## ordersテーブル
 
 | Column | Type | Option |
 | ------ | ---- | ------ |
-| sale | integer | null: false |
 | user | references | null: false , foreign_key: true |
 | item | references | null: false , foreign_key: true |
 
@@ -72,40 +75,6 @@ Things you may want to cover:
 - belongs_to :item
 - has_one :address
 
-## commentsテーブル
-
-| Column | Type | Option |
-| ------ | ---- | ------ |
-| post | text | null: false |
-| user | references | null: false ,foreign_key: true |
-| item | references | null: false ,foreign_key: true |
-
-### Association
-
-- belong_to :user
-- belongs_to :item
-
-## genresテーブル
-
-| Column | Type | Option |
-| ------ | ---- | ------ |
-| tag | string | null: false |
-
-### Association
-
-- has_many :items , through: item_genres
-
-## item_genresテーブル
-
-| Column | Type | Option |
-| ------ | ---- | ------ |
-| item | references | null: false , foreign_key: true |
-| genre | references | null: false , foreign_key: true |
-
-### Association
-
-- belongs_to :item
-- belongs_to :genre
 
 ## addressesテーブル
 
@@ -116,7 +85,8 @@ Things you may want to cover:
 | city | string | null: false |
 | house_number | string | null: false|
 | building_name | string| |
-| order | references | nill: false |
+| telephone | integer | null: false |
+| order | references | nill: false , foreign_key: true |
 
 ### Association
 
