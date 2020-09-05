@@ -10,8 +10,8 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it "passwordが6文字以上なら登録できる" do
-        @user.password = "aaaaaa"
-        @user.password_confirmation = "aaaaaa"
+        @user.password = "aaa111"
+        @user.password_confirmation = "aaa111"
         expect(@user).to be_valid
       end
       it "first_nameが全角かな、全角カナ、漢字なら登録できる" do
@@ -49,6 +49,8 @@ RSpec.describe User, type: :model do
         second_user.valid?
         expect(second_user.errors.full_messages).to include("Email has already been taken")
       end
+      #it "emailに@が含まれていない場合登録できない" do
+
       it "passwordが空だと登録できない" do
         @user.password = nil
         @user.valid?
@@ -65,6 +67,12 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = "bbbbbb"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "passwordに英数字両方が含まれていないと登録できない" do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid. Input Input both letters and numbers.")
       end
       it "first_nameが空だと登録できない" do
         @user.first_name = nil
@@ -111,8 +119,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
-      
-      
     end
   end
 end
