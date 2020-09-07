@@ -89,3 +89,12 @@ Things you may want to cover:
 ### Association
 
 - belongs_to order
+
+ belongs_to :user
+  has_many :order
+
+  belongs_to :user
+  belongs_to :item
+  has_one :address
+
+belongs_to :order
