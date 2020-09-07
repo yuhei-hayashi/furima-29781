@@ -8,4 +8,17 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :order
   has_one_attached :image
+
+  with_options presence: true do
+    with_options numericality: { other_than: 0 } do 
+    validates :genre_id
+    validates :status_id
+    validates :delivery_id
+    validates :day_id
+    validates :area_id
+    end
+    validates :user_id
+    validates :image
+    validates :price , numericality: {in: 300..9999999 }
+  end
 end
