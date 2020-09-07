@@ -10,12 +10,15 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :birthday
-    PASSWORD_REGEX = validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i, message: 'is invalid. Input Input both letters and numbers.' }
-    NAME_REGEX = with_options format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters.' } do
+    PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i
+    validates :password, format: { with: PASSWORD_REGEX , message: 'is invalid. Input Input both letters and numbers.' }
+    NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+    with_options format: { with: NAME_REGEX, message: 'is invalid. Input full-width characters.' } do
       validates :first_name
       validates :last_name
     end
-    NAME_READING_REGEX = with_options format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid. Input full-width katakana characters.'} do
+    NAME_READING_REGEX = /\A[ァ-ヶー－]+\z/
+    with_options format: { with: NAME_READING_REGEX, message: 'is invalid. Input full-width katakana characters.'} do
       validates :first_name_reading
       validates :last_name_reading
     end
