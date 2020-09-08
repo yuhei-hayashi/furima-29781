@@ -19,6 +19,6 @@ class Item < ApplicationRecord
     end
     validates :user_id
     validates :image
-    validates :price , numericality: {in: 300..9999999 }
+    validates :price , inclusion: {in: 300..9999999}
   end
 end
