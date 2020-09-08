@@ -117,7 +117,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceが全角入力の場合登録出来ない' do
-        @item.price = "５００"
+        @item.price = '５００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
