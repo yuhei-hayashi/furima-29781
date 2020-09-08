@@ -20,6 +20,6 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :explanation
-    validates :price, inclusion: {in: 300..9_999_999} ,format: {with: /\A[0-9]+\z/}
+    validates :price, inclusion: {in: 300..9_999_999}, format: {with: /\A[0-9]+\z/}
   end
 end
