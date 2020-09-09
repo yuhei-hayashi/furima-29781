@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :item_find
+  before_action :item_find , :new_order ,:check_saled
 
   def index
-    @order = OrderAddress.new(order_params)
   end
 
   def create
-    @order = OrderAddress.new(order_params)
     if @order.valid?
       pay_item
       @order.save
@@ -32,5 +30,14 @@ class OrdersController < ApplicationController
   end
   def item_find
     @item = Item.find(params[:item_id])
+  end
+
+  def new_order
+    @order = OrderAddress.new(order_params)
+  end
+  def check_saled
+    unless Order.find_by(item_id:params[:item_id]) == nil
+      redirect_to root_path
+    end
   end
 end
