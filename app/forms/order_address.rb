@@ -8,7 +8,7 @@ class OrderAddress
     validates :post_code , format: {with: /\A\d{3}[-]\d{4}\z/}
     TELEPHONE_REGEX = /\A\d{11}\z/
     validates :telephone , format: {with:TELEPHONE_REGEX}
-    validates :area_id
+    validates :area_id , numericality: { other_than: 0 }
     validates :city
     validates :house_number
     validates :token
