@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day
   belongs_to_active_hash :area
   belongs_to :user
-  has_many :order
+  has_many :order, dependent: :destroy
   has_one_attached :image
 
   with_options numericality: { other_than: 0 } do
