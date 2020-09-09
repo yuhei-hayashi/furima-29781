@@ -1,7 +1,7 @@
 class OrderAddress
 
   include ActiveModel::Model
-  attr_accessor :post_code , :prefecture , :city ,:house_number , :building , :telephone
+  attr_accessor :post_code , :prefecture , :city ,:house_number , :building , :telephone , :user_id , :item_id , :token
 
   with_options presence: true do
     POSTCODE_REGEX = /\A\d{3}[-]\d{4}\z/
@@ -11,6 +11,7 @@ class OrderAddress
     validates :prefecture
     validates :city
     validates :house_number
+    validates :token
   end
 
   def save
