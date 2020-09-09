@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :item_find, :new_order, :check_saled, :kick_exhibitor, :move_to_index
+  before_action  :move_to_index , :item_find, :new_order, :check_saled, :kick_exhibitor
 
   def index
   end
